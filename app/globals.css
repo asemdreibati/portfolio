@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #fafafa;
+    --bg-surface: #ffffff;
+    --bg-surface-2: #f4f4f5;
+    --border: #e4e4e7;
+    --text: #09090b;
+    --text-muted: #71717a;
+    --primary: #7c3aed;
+    --primary-hover: #6d28d9;
+  }
+
+  .dark {
+    --bg: #09090b;
+    --bg-surface: #18181b;
+    --bg-surface-2: #27272a;
+    --border: #3f3f46;
+    --text: #fafafa;
+    --text-muted: #a1a1aa;
+    --primary: #8b5cf6;
+    --primary-hover: #a78bfa;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  ::selection {
+    background-color: rgba(139, 92, 246, 0.3);
+    color: #c4b5fd;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.4);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.7);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm
+           bg-gradient-to-r from-primary-600 to-primary-500 text-white
+           hover:from-primary-700 hover:to-primary-600
+           shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40
+           transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm
+           border border-[var(--border)] text-[var(--text)]
+           hover:border-primary-500 hover:text-primary-500
+           hover:bg-primary-500/10
+           transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold text-[var(--text)] mb-4;
+  }
+
+  .section-subheading {
+    @apply text-[var(--text-muted)] text-lg mb-12 max-w-2xl;
+  }
+
+  .card {
+    @apply bg-[var(--bg-surface)] border border-[var(--border)] rounded-2xl
+           transition-all duration-300 hover:border-primary-500/50
+           hover:shadow-xl hover:shadow-primary-500/10;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #8b5cf6 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s linear infinite;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl;
+  }
+
+  .glass-card-light {
+    @apply backdrop-blur-xl bg-black/5 border border-black/10 rounded-2xl;
+  }
+}
+
+@layer utilities {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-on-scroll-left {
+    opacity: 0;
+    transform: translateX(-24px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-on-scroll-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-on-scroll-right {
+    opacity: 0;
+    transform: translateX(24px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-on-scroll-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+  .stagger-6 { transition-delay: 0.6s; }
+  .stagger-7 { transition-delay: 0.7s; }
+  .stagger-8 { transition-delay: 0.8s; }
+
+  .bg-grid {
+    background-image: radial-gradient(circle, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(20px, -30px) scale(1.08) rotate(3deg); }
+  50% { transform: translate(-15px, 20px) scale(0.95) rotate(-2deg); }
+  75% { transform: translate(10px, -10px) scale(1.03) rotate(1deg); }
+}
+
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(-25px, 15px) scale(1.05) rotate(-3deg); }
+  50% { transform: translate(20px, -25px) scale(0.92) rotate(2deg); }
+  75% { transform: translate(-10px, 20px) scale(1.08) rotate(-1deg); }
+}
+
+@keyframes blobFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(15px, 25px) scale(1.1); }
+  66% { transform: translate(-20px, -15px) scale(0.9); }
+}
+
+.blob-1 {
+  animation: blobFloat 10s ease-in-out infinite;
+}
+
+.blob-2 {
+  animation: blobFloat2 13s ease-in-out infinite 1s;
+}
+
+.blob-3 {
+  animation: blobFloat3 9s ease-in-out infinite 3s;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%);
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
