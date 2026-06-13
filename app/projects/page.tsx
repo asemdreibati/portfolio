@@ -183,7 +183,7 @@ export default function ProjectsPage() {
             Want to know more?
           </h2>
           <p className="text-[var(--text-muted)] text-sm max-w-md mx-auto mb-6">
-            These projects are internal and private. Reach out directly if you'd like to discuss
+            These projects are internal and private. Reach out directly if you&apos;d like to discuss
             the architecture, implementation details, or anything else.
           </p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
