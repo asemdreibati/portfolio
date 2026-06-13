@@ -112,7 +112,7 @@ export default function ProjectsPage() {
           {workProjects.map((project, i) => (
             <div
               key={project.slug}
-              className="group card p-0 overflow-hidden hover:-translate-y-1 transition-all duration-300"
+              className="group card p-0 overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               {/* Project screenshot */}
@@ -132,7 +132,7 @@ export default function ProjectsPage() {
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-1">
                 <h2 className="text-xl font-bold text-[var(--text)] mb-2 group-hover:text-primary-500 transition-colors duration-200">
                   {project.title}
                 </h2>
@@ -163,7 +163,7 @@ export default function ProjectsPage() {
                   ))}
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex gap-3 mt-auto">
                   <Link
                     href={`/projects/${project.slug}`}
                     className="btn-primary flex-1 justify-center text-sm"

@@ -7,7 +7,6 @@ import {
   Github,
   Linkedin,
   ExternalLink,
-  ChevronDown,
 } from 'lucide-react';
 
 const roles = [
@@ -290,15 +289,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <a
-        href="#skills"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[var(--text-muted)] hover:text-primary-500 transition-colors duration-200 animate-bounce"
-        aria-label="Scroll down"
-      >
-        <span className="text-xs font-medium">Scroll</span>
-        <ChevronDown className="w-4 h-4" />
-      </a>
     </section>
   );
 }

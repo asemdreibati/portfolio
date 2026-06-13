@@ -59,10 +59,15 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    const subject = encodeURIComponent(form.subject || 'Portfolio Contact');
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+    );
+    window.location.href = `mailto:asemdreibati97@gmail.com?subject=${subject}&body=${body}`;
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-    }, 1500);
+    }, 800);
   };
 
   return (
