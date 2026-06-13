@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Lock } from 'lucide-react'
 
@@ -8,7 +7,6 @@ const workProjects = [
     title: 'Angular Reactive Forms Library',
     shortDescription:
       'A powerful JSON-driven dynamic forms generator that revolutionizes form management in Angular applications. Eliminate boilerplate code and create complex forms with elegant configuration.',
-    image: '/images/angular-forms.png',
     tags: ['Angular 17+', 'Reactive Forms', 'JSON Configuration', 'Dynamic Forms'],
     features: ['JSON-driven config', 'Nested groups & arrays', 'Built-in validation', 'Custom error messages'],
     gradient: 'from-orange-500 to-red-600',
@@ -21,7 +19,6 @@ const workProjects = [
     title: 'Chroma Quiz',
     shortDescription:
       'A multilingual color-knowledge challenge built with Angular 19 Signals that tests color-theory mastery across three languages with dynamic question generation.',
-    image: '/images/angular-chroma-quiz-1.png',
     tags: ['Angular 19', 'Signals', 'Multilingual', 'TypeScript', 'Tailwind CSS'],
     features: ['EN / ES / AR support', 'RTL/LTR switching', 'Signal Store', 'Offline-ready'],
     gradient: 'from-purple-500 to-pink-600',
@@ -34,7 +31,6 @@ const workProjects = [
     title: 'Exam Management System',
     shortDescription:
       'An automated exam-management and observer-distribution system that ensures fair, auditable, and scalable assignment of observers to exam rooms while respecting user constraints.',
-    image: '/images/exam-management.png',
     tags: ['PHP', 'Laravel', 'Blade', 'Max-Flow Algorithm'],
     features: ['Max-Flow distribution', 'Role-based assignment', 'Obligation management', 'Audit trail'],
     gradient: 'from-blue-500 to-indigo-600',
@@ -47,7 +43,6 @@ const workProjects = [
     title: 'Microservices Ticketing Platform',
     shortDescription:
       'An event-driven ticketing platform built on a microservices architecture with passwordless magic-link authentication.',
-    image: '/images/microservices.png',
     tags: ['Node.js', 'TypeScript', 'NATS Streaming', 'MongoDB', 'Next.js', 'Kubernetes'],
     features: ['NATS Streaming', 'Magic-link auth', 'Kubernetes + Skaffold', 'Concurrency control'],
     gradient: 'from-green-500 to-teal-600',
@@ -60,7 +55,6 @@ const workProjects = [
     title: 'The Signals Shop',
     shortDescription:
       'A cutting-edge e-commerce PWA built with Angular 19 featuring the NgRx Signal Store for ultra-responsive, signals-based state management.',
-    image: '/images/angular.png',
     tags: ['Angular 19', 'NgRx SignalStore', 'TypeScript 5.3', 'Tailwind CSS', 'Vite'],
     features: ['PWA + offline', 'NgRx SignalStore', '95 Lighthouse score', 'Multi-tab sync'],
     gradient: 'from-rose-500 to-orange-500',
@@ -73,7 +67,6 @@ const workProjects = [
     title: 'IM-Chat (C++/Qt)',
     shortDescription:
       'A lightweight, cross-platform instant-messaging app built with C++ and Qt, featuring a clean client-server architecture with private, group, and broadcast messaging.',
-    image: '/images/qt.png',
     tags: ['C++17', 'Qt 6', 'CMake', 'TCP Sockets'],
     features: ['Unicast / Multicast / Broadcast', 'Low-latency TCP', 'Cross-platform', 'Qt Widgets GUI'],
     gradient: 'from-slate-500 to-gray-700',
@@ -115,16 +108,17 @@ export default function ProjectsPage() {
               className="group card p-0 overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              {/* Project screenshot */}
-              <div className="relative h-52 overflow-hidden bg-[var(--bg-surface)]">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              {/* Project visual */}
+              <div
+                className={`relative h-52 overflow-hidden bg-gradient-to-br ${project.gradient} flex items-center justify-center`}
+              >
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_40%,white,transparent_60%)]" />
+                <span
+                  className="text-6xl font-black tracking-tighter opacity-20 select-none"
+                  style={{ color: 'white' }}
+                >
+                  {project.title.slice(0, 2).toUpperCase()}
+                </span>
                 {/* Internal badge */}
                 <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-sm border border-white/10 rounded-lg px-2.5 py-1 text-xs font-medium text-white flex items-center gap-1.5">
                   <Lock className="w-3 h-3" /> Internal

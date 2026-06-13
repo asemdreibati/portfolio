@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, Lock, ShoppingCart, Gauge, WifiOff, Layers } from 'lucide-react'
 
@@ -46,17 +45,10 @@ export default function SignalsShopPage() {
           <ArrowLeft className="w-4 h-4" /> All Projects
         </Link>
 
-        {/* Hero image */}
-        <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden mb-10 card p-0">
-          <Image
-            src="/images/angular.png"
-            alt="The Signals Shop e-commerce app screenshot"
-            fill
-            className="object-cover"
-            priority
-            sizes="(max-width: 768px) 100vw, 896px"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        {/* Hero banner */}
+        <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden mb-10 bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center">
+          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_40%,white,transparent_60%)]" />
+          <span className="text-8xl font-black tracking-tighter opacity-20 select-none text-white">SS</span>
           <div className="absolute bottom-6 left-6 flex gap-2">
             <span className="bg-rose-500/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
               Angular 19 PWA
