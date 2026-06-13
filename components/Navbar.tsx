@@ -31,13 +31,15 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
+
+  // Always restore scroll on route change (catches zoom/resize edge cases)
+  useEffect(() => {
+    setMenuOpen(false)
+    document.body.style.overflow = ''
+  }, [pathname])
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/'
