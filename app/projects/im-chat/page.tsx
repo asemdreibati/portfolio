@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, Lock, Radio, Monitor, Wifi, BookOpen } from 'lucide-react'
 
@@ -50,18 +51,9 @@ export default function ImChatPage() {
           <ArrowLeft className="w-4 h-4" /> All Projects
         </Link>
 
-        {/* Hero banner */}
-        <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden mb-10 bg-gradient-to-br from-slate-500 to-gray-700 flex items-center justify-center">
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_40%,white,transparent_60%)]" />
-          <span className="text-8xl font-black tracking-tighter opacity-20 select-none text-white">IM</span>
-          <div className="absolute bottom-6 left-6 flex gap-2">
-            <span className="bg-slate-600/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
-              C++ / Qt 6
-            </span>
-            <span className="bg-black/50 backdrop-blur-sm border border-white/10 text-white text-xs font-semibold px-3 py-1 rounded-full">
-              Open Source
-            </span>
-          </div>
+        {/* Hero image */}
+        <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden mb-10 bg-[var(--bg-surface-2)]">
+          <Image src="/images/qt.png" alt="IM-Chat" fill className="object-contain p-6" sizes="(max-width: 896px) 100vw, 896px" />
         </div>
 
         {/* Title */}

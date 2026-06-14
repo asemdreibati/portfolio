@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Lock } from 'lucide-react'
 
@@ -9,7 +10,7 @@ const workProjects = [
       'A powerful JSON-driven dynamic forms generator that revolutionizes form management in Angular applications. Eliminate boilerplate code and create complex forms with elegant configuration.',
     tags: ['Angular 17+', 'Reactive Forms', 'JSON Configuration', 'Dynamic Forms'],
     features: ['JSON-driven config', 'Nested groups & arrays', 'Built-in validation', 'Custom error messages'],
-    gradient: 'from-orange-500 to-red-600',
+    image: '/images/angular-forms.png',
     color: '#f97316',
     bg: 'bg-orange-500/10',
     border: 'border-orange-500/20',
@@ -21,7 +22,7 @@ const workProjects = [
       'A multilingual color-knowledge challenge built with Angular 19 Signals that tests color-theory mastery across three languages with dynamic question generation.',
     tags: ['Angular 19', 'Signals', 'Multilingual', 'TypeScript', 'Tailwind CSS'],
     features: ['EN / ES / AR support', 'RTL/LTR switching', 'Signal Store', 'Offline-ready'],
-    gradient: 'from-purple-500 to-pink-600',
+    image: '/images/angular-chroma-quiz-1.png',
     color: '#a855f7',
     bg: 'bg-purple-500/10',
     border: 'border-purple-500/20',
@@ -33,7 +34,7 @@ const workProjects = [
       'An automated exam-management and observer-distribution system that ensures fair, auditable, and scalable assignment of observers to exam rooms while respecting user constraints.',
     tags: ['PHP', 'Laravel', 'Blade', 'Max-Flow Algorithm'],
     features: ['Max-Flow distribution', 'Role-based assignment', 'Obligation management', 'Audit trail'],
-    gradient: 'from-blue-500 to-indigo-600',
+    image: '/images/exam-management.png',
     color: '#3b82f6',
     bg: 'bg-blue-500/10',
     border: 'border-blue-500/20',
@@ -45,7 +46,7 @@ const workProjects = [
       'An event-driven ticketing platform built on a microservices architecture with passwordless magic-link authentication.',
     tags: ['Node.js', 'TypeScript', 'NATS Streaming', 'MongoDB', 'Next.js', 'Kubernetes'],
     features: ['NATS Streaming', 'Magic-link auth', 'Kubernetes + Skaffold', 'Concurrency control'],
-    gradient: 'from-green-500 to-teal-600',
+    image: '/images/microservices.png',
     color: '#10b981',
     bg: 'bg-green-500/10',
     border: 'border-green-500/20',
@@ -57,7 +58,7 @@ const workProjects = [
       'A cutting-edge e-commerce PWA built with Angular 19 featuring the NgRx Signal Store for ultra-responsive, signals-based state management.',
     tags: ['Angular 19', 'NgRx SignalStore', 'TypeScript 5.3', 'Tailwind CSS', 'Vite'],
     features: ['PWA + offline', 'NgRx SignalStore', '95 Lighthouse score', 'Multi-tab sync'],
-    gradient: 'from-rose-500 to-orange-500',
+    image: '/images/angular.png',
     color: '#f43f5e',
     bg: 'bg-rose-500/10',
     border: 'border-rose-500/20',
@@ -69,7 +70,7 @@ const workProjects = [
       'A lightweight, cross-platform instant-messaging app built with C++ and Qt, featuring a clean client-server architecture with private, group, and broadcast messaging.',
     tags: ['C++17', 'Qt 6', 'CMake', 'TCP Sockets'],
     features: ['Unicast / Multicast / Broadcast', 'Low-latency TCP', 'Cross-platform', 'Qt Widgets GUI'],
-    gradient: 'from-slate-500 to-gray-700',
+    image: '/images/qt.png',
     color: '#64748b',
     bg: 'bg-slate-500/10',
     border: 'border-slate-500/20',
@@ -109,16 +110,14 @@ export default function ProjectsPage() {
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               {/* Project visual */}
-              <div
-                className={`relative h-52 overflow-hidden bg-gradient-to-br ${project.gradient} flex items-center justify-center`}
-              >
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_40%,white,transparent_60%)]" />
-                <span
-                  className="text-6xl font-black tracking-tighter opacity-20 select-none"
-                  style={{ color: 'white' }}
-                >
-                  {project.title.slice(0, 2).toUpperCase()}
-                </span>
+              <div className="relative h-52 overflow-hidden bg-[var(--bg-surface-2)]">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
                 {/* Internal badge */}
                 <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-sm border border-white/10 rounded-lg px-2.5 py-1 text-xs font-medium text-white flex items-center gap-1.5">
                   <Lock className="w-3 h-3" /> Internal

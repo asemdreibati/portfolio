@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, Lock, GitBranch, Users, Shield, Scale } from 'lucide-react'
 
@@ -49,15 +50,9 @@ export default function ExamManagementPage() {
           <ArrowLeft className="w-4 h-4" /> All Projects
         </Link>
 
-        {/* Hero banner */}
-        <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden mb-10 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_40%,white,transparent_60%)]" />
-          <span className="text-8xl font-black tracking-tighter opacity-20 select-none text-white">EM</span>
-          <div className="absolute bottom-6 left-6">
-            <span className="bg-blue-500/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
-              PHP / Laravel
-            </span>
-          </div>
+        {/* Hero image */}
+        <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden mb-10 bg-[var(--bg-surface-2)]">
+          <Image src="/images/exam-management.png" alt="Exam Management System" fill className="object-cover" sizes="(max-width: 896px) 100vw, 896px" />
         </div>
 
         {/* Title */}
