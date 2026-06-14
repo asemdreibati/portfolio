@@ -22,28 +22,17 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          name: form.name,
-          email: form.email,
-          subject: form.subject || 'Portfolio Contact',
-          message: form.message,
-        }),
-      });
-      const data = await res.json();
-      if (data.success) { setSubmitted(true); } else { setError('Something went wrong. Please try again.'); }
-    } catch { setError('Network error. Please try again.'); }
-    finally { setLoading(false); }
+    const subject = encodeURIComponent(form.subject || 'Portfolio Contact');
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+    );
+    window.location.href = `mailto:asemdreibati97@gmail.com?subject=${subject}&body=${body}`;
+    setLoading(false);
+    setSubmitted(true);
   };
 
   return (
@@ -117,7 +106,6 @@ export default function Contact() {
                   <button type="submit" disabled={loading} className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0">
                     {loading ? (<><svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>Sending...</>) : (<>Send Message <Send className="w-4 h-4" /></>)}
                   </button>
-                  {error && <p className="text-xs text-red-400 text-center">{error}</p>}
                   <p className="text-xs text-[var(--text-muted)] text-center">No spam. Your info is only used to respond to your message.</p>
                 </form>
               )}
