@@ -28,14 +28,18 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
     setError('');
-    const formData = new FormData();
-    formData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY!);
-    formData.append('name', form.name);
-    formData.append('email', form.email);
-    formData.append('subject', form.subject || 'Portfolio Contact');
-    formData.append('message', form.message);
     try {
-      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          name: form.name,
+          email: form.email,
+          subject: form.subject || 'Portfolio Contact',
+          message: form.message,
+        }),
+      });
       const data = await res.json();
       if (data.success) { setSubmitted(true); } else { setError('Something went wrong. Please try again.'); }
     } catch { setError('Network error. Please try again.'); }
